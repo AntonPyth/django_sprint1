@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Лента записей{% endblock %}
+{% block content %}
+<h1>Лента записей</h1>                        
+{% for blog in blog_list reversed %}
+<hr>
+<article>
+  <ul>
+    <li>
+      {{ blog.location }}              
+    </li>
+    <li>
+      {{ blog.date }}
+    </li>
+    <li>
+      Категория: <a href="{% url 'blog:category_posts' blog.category %}">{{ blog.category }}</a>
+    </li>
+  </ul>          
+  <p>
+    {{ blog.text|truncatewords:10 }}
+  </p>
+  <a href="{% url 'blog:post_detail' blog.id %}">Читать полный текст</a>
+</article>
+{% endfor %}
+{% endblock %}  
