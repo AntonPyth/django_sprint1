@@ -60,6 +60,7 @@ def category_posts(request, category_slug):
     context = {'category_view': category_slug}
     return render(request, template, context)
 
+
 def post_detail(request, post_id):
     template = 'blog/detail.html'
     if post_id not in POST_DICT:
